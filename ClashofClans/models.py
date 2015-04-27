@@ -14,3 +14,30 @@ class Clan(models.Model):
     trofeusBase = models.IntegerField(default=0)
     ubicacio = models.IntegerField('Ubicacion', blank=False,default=1,choices=ubicacioOpciones)
     country = CountryField()
+
+class Jugador(models.Model):
+    nom = models.CharField(max_length=60)
+    id = models.IntegerField();
+    nivell= models.IntegerField(default=0);
+    idLliga = models.IntegerField(default=0)
+    idCiutat = models.IntegerField()
+    idClan = models.IntegerField(default=0)
+
+class Lliga(models.Model):
+    idLliga = models.IntegerField(default=0)
+    idPremi = models.IntegerField(default=0)
+    numCopes = models.IntegerField(default=0);
+
+class Guerra(models.Model):
+    idGuerra = models.IntegerField()
+    idClan1 = models.IntegerField()
+    idClan2 = models.IntegerField()
+
+class Ciutat(models.Model):
+    id = models.IntegerField()
+
+class PremiLliga(models.Model):
+    id = models.IntegerField()
+    oro = models.IntegerField()
+    elixir = models.IntegerField()
+    elixirNegre = models.IntegerField()
