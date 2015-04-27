@@ -17,13 +17,13 @@ class Clan(models.Model):
 
 class Jugador(models.Model):
     nom = models.CharField(max_length=60)
-    id = models.IntegerField();
+    id = models.IntegerField(primary_key=True);
     nivell= models.IntegerField(default=0);
     idLliga = models.IntegerField(default=0)
     idCiutat = models.IntegerField()
     idClan = models.IntegerField(default=0)
 
-class Lliga(models.Model):
+class Lligue(models.Model):
     idLliga = models.IntegerField(default=0)
     idPremi = models.IntegerField(default=0)
     numCopes = models.IntegerField(default=0);
@@ -34,10 +34,10 @@ class Guerra(models.Model):
     idClan2 = models.IntegerField()
 
 class Ciutat(models.Model):
-    id = models.IntegerField()
+    id = models.IntegerField(primary_key=True)
 
-class PremiLliga(models.Model):
-    id = models.IntegerField()
+class PremiLligue(models.Model):
+    id = models.IntegerField(primary_key=True)
     oro = models.IntegerField()
     elixir = models.IntegerField()
     elixirNegre = models.IntegerField()
