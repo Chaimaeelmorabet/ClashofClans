@@ -7,7 +7,7 @@ from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 
 from models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
-from forms import RestaurantForm, DishForm
+from forms import CiutatForm
 
 class CiutatDetail(DetailView):
     model = Ciutat
@@ -20,7 +20,7 @@ class CiutatDetail(DetailView):
 class CiutatCreate(CreateView):
     model = Ciutat
     template_name = 'ClashofClans/form.html'
-    form_class = RestaurantForm
+    form_class = CiutatForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user

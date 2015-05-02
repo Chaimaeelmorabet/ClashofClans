@@ -10,4 +10,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     (r'^myrestaurants/',  include('myrestaurants.urls',  namespace='myrestaurants')),
+    (r'^ClashofClans/',  include('ClashofClans.urls',  namespace='ClashofClans')),
 )
