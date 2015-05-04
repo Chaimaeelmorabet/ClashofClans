@@ -16,6 +16,13 @@
     {% endif %}
 </h1>
 
+<h1>
+    ClashofClans: Jugador
+    {% if user %}
+        (<a href="{% url 'ClashofClans:jugador_create' %}">add jugador</a>)
+    {% endif %}
+</h1>
+
 
 <ul>
     {% for jugador in latest_ciutat_list %}

@@ -6,7 +6,7 @@
 
 <span vocab="http://schema.org/" typeof="Restaurant">
 <h1>
-    <span property="name">{{ restaurant.name }}</span>
+    <span property="name">{{ restaurant.street }}</span>
     {% if user == restaurant.user %}
         (<a href="{% url 'myrestaurants:restaurant_edit' restaurant.id %}">edit</a>)
     {% endif %}
