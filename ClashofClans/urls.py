@@ -14,8 +14,8 @@ urlpatterns = patterns('',
             context_object_name='latest_ciutat_list',
             template_name='ClashofClans/main.html'),
         name='ciutat_list'),
-    # Create a restaurant: /myrestaurants/restaurants/create/
-    url(r'^ciutat/create/$',
+    # Create a restaurant: /ClashofClans/ciutats/create/
+    url(r'^ciutats/create/$',
         CiutatCreate.as_view(),
         name='ciutat_create'),
 
