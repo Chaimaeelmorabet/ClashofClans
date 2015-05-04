@@ -56,9 +56,9 @@ MIDDLEWARE_CLASSES = (
     
 )
 
-ROOT_URLCONF = 'myrecommendations.urls'
+ROOT_URLCONF = 'ClashofClansSettings.urls'
 
-WSGI_APPLICATION = 'myrecommendations.wsgi.application'
+WSGI_APPLICATION = 'ClashofClansSettings.wsgi.application'
 
 
 # Database

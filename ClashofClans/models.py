@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django_countries.fields import CountryField
-from datetime import date
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Clan(models.Model):
@@ -28,6 +28,7 @@ class Jugador(models.Model):
     def __unicode__(self):
         return self.nom
 
+
 class Lligue(models.Model):
     idLliga = models.IntegerField(default=0)
     idPremi = models.IntegerField(default=0)
@@ -46,6 +47,9 @@ class Ciutat(models.Model):
     id = models.IntegerField(primary_key=True)
     def __unicode__(self):
         return str(self.id)
+    def get_absolute_url(self):
+        return reverse('ClashofClans:ciutat_list', kwargs={})
+
 
 class PremiLligue(models.Model):
     id = models.IntegerField(primary_key=True)

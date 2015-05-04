@@ -3,11 +3,18 @@
 {% block content %}
 
 <h1>
-    ClashofClans
+    ClashofClans: Ciutat
     {% if user %}
         (<a href="{% url 'ClashofClans:ciutat_create' %}">add</a>)
     {% endif %}
 </h1>
 
 
+<ul>
+    {% for ciutat in latest_restaurant_list %}
+        <li><a href="{% url 'ClashofClans:ciutat_detail' ciutat.id %}">{{ ciutat.id }}</a></li>
+    {% empty %}
+        <li>Sorry, no cities registered yet.</li>
+    {% endfor %}
+</ul>
 {% endblock %}
