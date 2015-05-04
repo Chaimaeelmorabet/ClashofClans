@@ -6,4 +6,9 @@ class CiutatForm(ModelForm):
         model = Ciutat
         exclude = ('user', 'date',)
 
+class JugadorForm(ModelForm):
+    class Meta:
+        model = Jugador
+        exclude = ('user', 'date',)
+
 

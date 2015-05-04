@@ -6,27 +6,35 @@ from django.core.urlresolvers import reverse
 # Create your models here.
 class Clan(models.Model):
     tipusOpciones = ((1,'Privado'),(2,'Publico'),(3,'Solo invitacion'))
-    ubicacioOpciones = ((1,'Internacional'),(2,'España'),(3,'Marruecos'))
     nom = models.CharField(max_length=60)
-    idClan = models.IntegerField()
+    idClan = models.AutoField(primary_key=True)
     idGuerra = models.IntegerField()
     punts = models.IntegerField(default=0)
     tipus = models.PositiveSmallIntegerField('Tipo clan', blank=False, default=2, choices=tipusOpciones)
     trofeusBase = models.IntegerField(default=0)
-    ubicacio = models.IntegerField('Ubicacion', blank=False,default=1,choices=ubicacioOpciones)
-    country = CountryField()
+    ubicacio = CountryField()
     def __unicode__(self):
         return self.nom
 
+
+class Ciutat(models.Model):
+    id = models.IntegerField(primary_key=True)
+    def __unicode__(self):
+        return str(self.id)
+    def get_absolute_url(self):
+        return reverse('ClashofClans:ciutat_list', kwargs={})
+
 class Jugador(models.Model):
     nom = models.CharField(max_length=60)
-    id = models.IntegerField(primary_key=True);
-    nivell= models.IntegerField(default=0);
+    id = models.AutoField(primary_key=True)
+    nivell= models.IntegerField(default=0)
     idLliga = models.IntegerField(default=0)
-    idCiutat = models.IntegerField()
     idClan = models.IntegerField(default=0)
+    idCiutat = models.IntegerField()
     def __unicode__(self):
         return self.nom
+    def get_absolute_url(self):
+        return reverse('ClashofClans:ciutat_list', kwargs={})
 
 
 class Lligue(models.Model):
@@ -43,12 +51,7 @@ class Guerra(models.Model):
     def __unicode__(self):
         str(self.idGuerra)
 
-class Ciutat(models.Model):
-    id = models.IntegerField(primary_key=True)
-    def __unicode__(self):
-        return str(self.id)
-    def get_absolute_url(self):
-        return reverse('ClashofClans:ciutat_list', kwargs={})
+
 
 
 class PremiLligue(models.Model):

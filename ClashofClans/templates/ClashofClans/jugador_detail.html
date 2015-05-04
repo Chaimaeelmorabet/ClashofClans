@@ -1,0 +1,17 @@
+{% extends "ClashofClans/base.html" %}
+
+{% block title %}Jugador - {{ jugador.nom }}{% endblock %}
+
+{% block content %}
+
+<span vocab="http://schema.org/" typeof="Jugador">
+<h1>
+    <span property="id">{{ jugador.nom }}</span>
+    {% if user == jugador.user %}
+        (<a href="{% url 'ClashofClans:jugador_edit' jugador.id %}">edit</a>)
+    {% endif %}
+</h1>
+
+
+</span>
+{% endblock %}

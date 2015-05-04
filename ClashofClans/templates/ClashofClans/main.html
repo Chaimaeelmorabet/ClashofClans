@@ -5,14 +5,21 @@
 <h1>
     ClashofClans: Ciutat
     {% if user %}
-        (<a href="{% url 'ClashofClans:ciutat_create' %}">add</a>)
+        (<a href="{% url 'ClashofClans:ciutat_create' %}">add ciutat</a>)
+    {% endif %}
+</h1>
+
+<h1>
+    ClashofClans: Jugador
+    {% if user %}
+        (<a href="{% url 'ClashofClans:jugador_create' %}">add jugador</a>)
     {% endif %}
 </h1>
 
 
 <ul>
-    {% for ciutat in latest_restaurant_list %}
-        <li><a href="{% url 'ClashofClans:ciutat_detail' ciutat.id %}">{{ ciutat.id }}</a></li>
+    {% for jugador in latest_ciutat_list %}
+        <li><a href="{% url 'ClashofClans:jugador_detail' jugador.id %}">{{ jugador.nom }}</a></li>
     {% empty %}
         <li>Sorry, no cities registered yet.</li>
     {% endfor %}
