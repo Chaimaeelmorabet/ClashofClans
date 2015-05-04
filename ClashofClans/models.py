@@ -14,7 +14,8 @@ class Clan(models.Model):
     ubicacio = CountryField()
     def __unicode__(self):
         return self.nom
-
+    def get_absolute_url(self):
+        return reverse('ClashofClans:ciutat_list', kwargs={})
 
 class PremiLligue(models.Model):
     id = models.AutoField(primary_key=True)
@@ -23,6 +24,8 @@ class PremiLligue(models.Model):
     elixirNegre = models.IntegerField()
     def __unicode__(self):
         return str(self.id)
+    def get_absolute_url(self):
+        return reverse('ClashofClans:ciutat_list', kwargs={})
 
 class Lligue(models.Model):
     idLliga = models.AutoField(primary_key=True)
@@ -30,6 +33,8 @@ class Lligue(models.Model):
     numCopes = models.IntegerField(default=0)
     def __unicode__(self):
         return str(self.idLliga)
+    def get_absolute_url(self):
+        return reverse('ClashofClans:ciutat_list', kwargs={})
 
 class Jugador(models.Model):
     nom = models.CharField(max_length=60)
@@ -48,6 +53,8 @@ class Guerra(models.Model):
     idClan2 = models.ForeignKey(Clan, null=True, related_name='idClans2')
     def __unicode__(self):
         str(self.idGuerra)
+    def get_absolute_url(self):
+        return reverse('ClashofClans:ciutat_list', kwargs={})
 
 
 class Ciutat(models.Model):

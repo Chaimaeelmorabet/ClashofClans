@@ -9,6 +9,14 @@
     {% endif %}
 </h1>
 
+<ul>
+    {% for ciutat in latest_ciutat_list %}
+        <li><a href="{% url 'ClashofClans:ciutat_detail' ciutat.id %}">{{ ciutat.id }}</a></li>
+    {% empty %}
+        <li>Sorry, no cities registered yet.</li>
+    {% endfor %}
+</ul>
+
 <h1>
     ClashofClans: Jugador
     {% if user %}
@@ -19,11 +27,33 @@
 
 
 
-<ul>
-    {% for jugador in latest_ciutat_list %}
-        <li><a href="{% url 'ClashofClans:jugador_detail' jugador.id %}">{{ jugador.nom }}</a></li>
-    {% empty %}
-        <li>Sorry, no cities registered yet.</li>
-    {% endfor %}
-</ul>
+<h1>
+    ClashofClans: Clan
+    {% if user %}
+        (<a href="{% url 'ClashofClans:clan_create' %}">add clan</a>)
+    {% endif %}
+</h1>
+
+<h1>
+    ClashofClans: Guerra Clan
+    {% if user %}
+        (<a href="{% url 'ClashofClans:guerraclan_create' %}">add guerra</a>)
+    {% endif %}
+</h1>
+
+<h1>
+    ClashofClans: Lliga
+    {% if user %}
+        (<a href="{% url 'ClashofClans:lliga_create' %}">add lliga</a>)
+    {% endif %}
+</h1>
+
+<h1>
+    ClashofClans: Premi Lliga
+    {% if user %}
+        (<a href="{% url 'ClashofClans:premi_create' %}">add premi</a>)
+    {% endif %}
+</h1>
+
+
 {% endblock %}

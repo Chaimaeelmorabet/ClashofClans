@@ -11,4 +11,24 @@ class JugadorForm(ModelForm):
         model = Jugador
         exclude = ('user', 'date',)
 
+class ClanForm(ModelForm):
+    class Meta:
+        model = Clan
+        exclude = ('user', 'date',)
+
+class GuerraClanForm(ModelForm):
+    class Meta:
+        model = Guerra
+        exclude = ('user', 'date',)
+
+class LligaForm(ModelForm):
+    class Meta:
+        model = Lligue
+        exclude = ('user', 'date',)
+
+class PremiLligaForm(ModelForm):
+    class Meta:
+        model = PremiLligue
+        exclude = ('user', 'date',)
+
 
