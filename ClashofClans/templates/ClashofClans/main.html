@@ -1,0 +1,13 @@
+{% extends "ClashofClans/base.html" %}
+
+{% block content %}
+
+<h1>
+    ClashofClans
+    {% if user %}
+        (<a href="{% url 'ClashofClans:ciutat_create' %}">add</a>)
+    {% endif %}
+</h1>
+
+
+{% endblock %}

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django_countries.fields import CountryField
+from datetime import date
 
 # Create your models here.
 class Clan(models.Model):
