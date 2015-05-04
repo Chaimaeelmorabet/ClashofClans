@@ -1,0 +1,27 @@
+{% extends "ClashofClans/base.html" %}
+
+{% block title %}Jugador - {{ premiLliga.id }}{% endblock %}
+
+{% block content %}
+
+<span vocab="http://schema.org/" typeof="Jugador">
+<h1>
+    <span property="id">{{ premiLliga.id }}</span>
+    {% if user == premiLliga.user %}
+        (<a href="{% url 'ClashofClans:Premi_edit' premiLliga.id %}">edit</a>)
+    {% endif %}
+</h1>
+
+<h2>Detalls: </h2>
+
+<p>
+    ID del jugador:         {{premiLliga.id }}  <br/>
+    Nivell del jugador:     {{ premiLliga.oro }} <br/>
+    LLiga del jugador:      {{ premiLliga.elixir }} <br/>
+    Clan del Jugador:       {{ premiLliga.elixirNegre }} <br/>
+
+
+</p>
+
+</span>
+{% endblock %}
