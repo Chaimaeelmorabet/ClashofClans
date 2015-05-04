@@ -1,0 +1,19 @@
+{% extends "ClashofClans/base.html" %}
+
+{% block content %}
+
+<h1>
+    Guerres
+
+</h1>
+<ul>
+    {% for guerra in latest_guerra_list %}
+        <li><a href="{% url 'ClashofClans:guerra_detail' guerra.id %}">{{ guerra.id }}</a></li>
+    {% empty %}
+        <li>Sorry, no wars registered yet.</li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

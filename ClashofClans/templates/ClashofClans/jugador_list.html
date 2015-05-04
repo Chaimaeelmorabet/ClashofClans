@@ -1,0 +1,19 @@
+{% extends "ClashofClans/base.html" %}
+
+{% block content %}
+
+<h1>
+    Jugadors
+
+</h1>
+<ul>
+    {% for jugador in latest_jugador_list %}
+        <li><a href="{% url 'ClashofClans:jugador_detail' jugador.id %}">{{ jugador.nom }}</a></li>
+    {% empty %}
+        <li>Sorry, no jugadors registered yet.</li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

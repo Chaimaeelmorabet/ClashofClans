@@ -1,0 +1,19 @@
+{% extends "ClashofClans/base.html" %}
+
+{% block content %}
+
+<h1>
+    Lligues
+
+</h1>
+<ul>
+    {% for lliga in latest_lliga_list %}
+        <li><a href="{% url 'ClashofClans:lliga_detail' lliga.id %}">{{ lliga.id }}</a></li>
+    {% empty %}
+        <li>Sorry, no leagues registered yet.</li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

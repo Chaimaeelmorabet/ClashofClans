@@ -1,0 +1,19 @@
+{% extends "ClashofClans/base.html" %}
+
+{% block content %}
+
+<h1>
+    Clans
+
+</h1>
+<ul>
+    {% for clan in latest_clan_list %}
+        <li><a href="{% url 'ClashofClans:clan_detail' clan.id %}">{{ clan.id }}</a></li>
+    {% empty %}
+        <li>Sorry, no clans registered yet.</li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

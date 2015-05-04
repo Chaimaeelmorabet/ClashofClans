@@ -5,22 +5,15 @@
 <h1>
     ClashofClans: Ciutat
     {% if user %}
-        (<a href="{% url 'ClashofClans:ciutat_create' %}">add ciutat</a>)
+        (<a href="{% url 'ClashofClans:ciutat_create' %}">add ciutat</a>) <a href="{% url 'ClashofClans:ciutats_list' %}">list</a>
     {% endif %}
 </h1>
 
-<ul>
-    {% for ciutat in latest_ciutat_list %}
-        <li><a href="{% url 'ClashofClans:lliga_detail' ciutat.id %}">{{ ciutat.id }}</a></li>
-    {% empty %}
-        <li>Sorry, no cities registered yet.</li>
-    {% endfor %}
-</ul>
 
 <h1>
     ClashofClans: Jugador
     {% if user %}
-        (<a href="{% url 'ClashofClans:jugador_create' %}">add jugador</a>)
+        (<a href="{% url 'ClashofClans:jugador_create' %}">add jugador</a>) <a href="{% url 'ClashofClans:jugador_list' %}">list</a>
     {% endif %}
 </h1>
 
@@ -30,28 +23,28 @@
 <h1>
     ClashofClans: Clan
     {% if user %}
-        (<a href="{% url 'ClashofClans:clan_create' %}">add clan</a>)
+        (<a href="{% url 'ClashofClans:clan_create' %}">add clan</a>) <a href="{% url 'ClashofClans:clan_list' %}">list</a>
     {% endif %}
 </h1>
 
 <h1>
     ClashofClans: Guerra Clan
     {% if user %}
-        (<a href="{% url 'ClashofClans:guerraclan_create' %}">add guerra</a>)
+        (<a href="{% url 'ClashofClans:guerraclan_create' %}">add guerra</a>) <a href="{% url 'ClashofClans:guerra_list' %}">list</a>
     {% endif %}
 </h1>
 
 <h1>
     ClashofClans: Lliga
     {% if user %}
-        (<a href="{% url 'ClashofClans:lliga_create' %}">add lliga</a>)
+        (<a href="{% url 'ClashofClans:lliga_create' %}">add lliga</a>) <a href="{% url 'ClashofClans:lliga_list' %}">list</a>
     {% endif %}
 </h1>
 
 <h1>
     ClashofClans: Premi Lliga
     {% if user %}
-        (<a href="{% url 'ClashofClans:premi_create' %}">add premi</a>)
+        (<a href="{% url 'ClashofClans:premi_create' %}">add premi</a>) <a href="{% url 'ClashofClans:ciutat_list' %}">list</a>
     {% endif %}
 </h1>
 
