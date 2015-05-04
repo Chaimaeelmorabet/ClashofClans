@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^$',
         ListView.as_view(
-            queryset=Ciutat.objects.all()[:5],
+            queryset=Lligue.objects.all()[:5],
             context_object_name='latest_ciutat_list',
             template_name='ClashofClans/main.html'),
         name='ciutat_list'),
@@ -73,7 +73,15 @@ urlpatterns = patterns('',
         ClanCreate.as_view(),
         name='clan_create'),
 
+    url(r'^clan/(?P<pk>\d+)/edit/$',
+        UpdateView.as_view(
+            model=Clan,
+            form_class=ClanForm,
+            template_name='ClashofClans/form.html'),
+        name='clan_edit'),
+
     #*****************Guerra Clan***************************
+
     # jugador details, ex.: /ClashofClans/jugador/1/
     url(r'^guerraClan/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
         GuerraClanDetail.as_view(),
@@ -84,7 +92,16 @@ urlpatterns = patterns('',
         GuerraClanCreate.as_view(),
         name='guerraclan_create'),
 
+        # Edit jugador details, ex: /ClashofClans/jugadors/1/edit/
+    url(r'^guerraClan/(?P<pk>\d+)/edit/$',
+        UpdateView.as_view(
+            model=Guerra,
+            form_class=GuerraClanForm,
+            template_name='ClashofClans/form.html'),
+        name='guerraClan_edit'),
+
     #*****************Lliga***************************
+
     # jugador details, ex.: /ClashofClans/jugador/1/
     url(r'^lliga/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
         LligaDetail.as_view(),
@@ -95,15 +112,38 @@ urlpatterns = patterns('',
         LligaCreate.as_view(),
         name='lliga_create'),
 
+        # Edit jugador details, ex: /ClashofClans/jugadors/1/edit/
+    url(r'^lliga/(?P<pk>\d+)/edit/$',
+        UpdateView.as_view(
+            model=Lligue,
+            form_class=LligaForm,
+            template_name='ClashofClans/form.html'),
+        name='lliga_edit'),
+
     #*****************Premi Lliga***************************
+
     # jugador details, ex.: /ClashofClans/jugador/1/
     url(r'^premiLliga/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
-        JugadorDetail.as_view(),
+        PremiLligaDetail.as_view(),
         name='premiLliga_detail'),
+        # Edit jugador details, ex: /ClashofClans/jugadors/1/edit/
+    url(r'^jugadors/(?P<pk>\d+)/edit/$',
+        UpdateView.as_view(
+            model=Jugador,
+            form_class=JugadorForm,
+            template_name='ClashofClans/form.html'),
+        name='jugador_edit'),
 
     # Create a clan: /ClashofClans/clan/create/
     url(r'^premiLliga/create/$',
         PremiLligaCreate.as_view(),
         name='premi_create'),
+        # Edit jugador details, ex: /ClashofClans/jugadors/1/edit/
+    url(r'^premiLliga/(?P<pk>\d+)/edit/$',
+        UpdateView.as_view(
+            model=PremiLligue,
+            form_class=PremiLligaForm,
+            template_name='ClashofClans/form.html'),
+        name='premiLliga_edit'),
 
 )

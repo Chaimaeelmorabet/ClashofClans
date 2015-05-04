@@ -11,7 +11,7 @@
 
 <ul>
     {% for ciutat in latest_ciutat_list %}
-        <li><a href="{% url 'ClashofClans:ciutat_detail' ciutat.id %}">{{ ciutat.id }}</a></li>
+        <li><a href="{% url 'ClashofClans:lliga_detail' ciutat.id %}">{{ ciutat.id }}</a></li>
     {% empty %}
         <li>Sorry, no cities registered yet.</li>
     {% endfor %}

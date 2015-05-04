@@ -50,8 +50,8 @@ class Jugador(models.Model):
 
 class Guerra(models.Model):
     id = models.AutoField(primary_key=True)
-    idClan1 = models.ForeignKey(Clan, null=True, related_name='idClans1')
-    idClan2 = models.ForeignKey(Clan, null=True, related_name='idClans2')
+    clan1 = models.ForeignKey(Clan, null=True, related_name='idClans1')
+    clan2 = models.ForeignKey(Clan, null=True, related_name='idClans2')
     def __unicode__(self):
         str(self.id)
     def get_absolute_url(self):
