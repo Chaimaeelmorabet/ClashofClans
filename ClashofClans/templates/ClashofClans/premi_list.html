@@ -1,0 +1,19 @@
+{% extends "ClashofClans/base.html" %}
+
+{% block content %}
+
+<h1>
+    Premis
+
+</h1>
+<ul>
+    {% for premi in latest_premi_list %}
+        <li><a href="{% url 'ClashofClans:premiLliga_detail' premi.id %}">{{ premi.id }}</a></li>
+    {% empty %}
+        <li>Sorry, no cities registered yet.</li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

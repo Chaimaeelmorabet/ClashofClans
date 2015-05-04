@@ -52,6 +52,12 @@ urlpatterns = patterns('',
             template_name='ClashofClans/lliga_list.html'),
         name='lliga_list'),
 
+        url(r'^premis/$',
+        ListView.as_view(
+            queryset=PremiLligue.objects.all(),
+            context_object_name='latest_premi_list',
+            template_name='ClashofClans/premi_list.html'),
+        name='premi_list'),
 
 
 
