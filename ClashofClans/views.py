@@ -1,13 +1,13 @@
 # Create your views here.
-
-from django.core import urlresolvers
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
+
 from django.views.generic.edit import CreateView
+from ClashofClans.serializers import CiutatSerializer
+from rest_framework import viewsets
 
 from models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
 from forms import CiutatForm,JugadorForm, ClanForm, GuerraClanForm, LligaForm, PremiLligaForm
+
 
 class CiutatDetail(DetailView):
     model = Ciutat
@@ -113,3 +113,10 @@ class PremiLligaCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(PremiLligaCreate, self).form_valid(form)
+
+class CiutatViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Ciutat.objects.all()
+    serializer_class = CiutatSerializer
