@@ -6,6 +6,11 @@ admin.autodiscover()
 
 router = routers.DefaultRouter()
 router.register(r'ciutats', views.CiutatViewSet)
+router.register(r'clans', views.ClanViewSet)
+router.register(r'guerres', views.GuerraViewSet)
+router.register(r'jugadors', views.JugadorViewSet)
+router.register(r'lligues', views.LligueViewSet)
+router.register(r'premilligues', views.PremiLligueViewSet)
 
 urlpatterns = patterns('',
     # Examples:

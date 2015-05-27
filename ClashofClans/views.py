@@ -2,7 +2,7 @@
 from django.views.generic import DetailView
 
 from django.views.generic.edit import CreateView
-from ClashofClans.serializers import CiutatSerializer
+from ClashofClans import serializers
 from rest_framework import viewsets
 
 from models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
@@ -119,4 +119,39 @@ class CiutatViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
     queryset = Ciutat.objects.all()
-    serializer_class = CiutatSerializer
+    serializer_class = serializers.CiutatSerializer
+
+class ClanViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Clan.objects.all()
+    serializer_class = serializers.ClanSerializer
+
+class GuerraViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Guerra.objects.all()
+    serializer_class = serializers.GuerraSerializer
+
+class JugadorViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Jugador.objects.all()
+    serializer_class = serializers.JugadorSerializer
+
+class LligueViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Lligue.objects.all()
+    serializer_class = serializers.LligueSerializer
+
+class PremiLligueViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = PremiLligue.objects.all()
+    serializer_class = serializers.PremiLligue
