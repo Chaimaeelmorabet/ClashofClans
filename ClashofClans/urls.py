@@ -1,62 +1,51 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 from django.utils import timezone
 from django.views.generic import DetailView, ListView, UpdateView
+from rest_framework import routers
 
 from ClashofClans.models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
 from forms import CiutatForm,JugadorForm, ClanForm, GuerraClanForm, LligaForm, PremiLligaForm
 from views import CiutatCreate,CiutatDetail,JugadorCreate,JugadorDetail, ClanCreate, GuerraClanCreate, LligaCreate, PremiLligaCreate, ClanDetail,\
     GuerraClanDetail, LligaDetail,PremiLligaDetail
 
-urlpatterns = patterns('',
+from ClashofClans import views
 
-    url(r'^$',
-        ListView.as_view(
-            queryset=Lligue.objects.all()[:5],
-            context_object_name='latest_lligue_list',
-            template_name='ClashofClans/main.html'),
-        name='ciutat_list'),
-    # List latest 5 ciutats: /ClashofClans/
+
+router = routers.DefaultRouter()
+router.register(r'ciutats', views.CiutatViewSet)
+router.register(r'clans', views.ClanViewSet)
+router.register(r'guerres', views.GuerraViewSet)
+router.register(r'jugadors', views.JugadorViewSet)
+router.register(r'lligues', views.LligueViewSet)
+router.register(r'premilligues', views.PremiLligueViewSet)
+
+urlpatterns = patterns('',
+    url(r'^api/', include(router.urls)),
+    url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^$', views.mainpage, name='home'),
 
     url(r'^ciutats/$',
-        ListView.as_view(
-            queryset=Ciutat.objects.all(),
-            context_object_name='latest_ciutat_list',
-            template_name='ClashofClans/ciutat_list.html'),
+        views.CiutatList.as_view(),
         name='ciutats_list'),
 
         url(r'^jugadors/$',
-        ListView.as_view(
-            queryset=Jugador.objects.all(),
-            context_object_name='latest_jugador_list',
-            template_name='ClashofClans/jugador_list.html'),
+        views.JugadorList.as_view(),
         name='jugador_list'),
 
         url(r'^clans/$',
-        ListView.as_view(
-            queryset=Clan.objects.all(),
-            context_object_name='latest_clan_list',
-            template_name='ClashofClans/clan_list.html'),
+        views.ClanList.as_view(),
         name='clan_list'),
 
         url(r'^guerres/$',
-        ListView.as_view(
-            queryset=Guerra.objects.all(),
-            context_object_name='latest_guerra_list',
-            template_name='ClashofClans/guerra_list.html'),
+        views.GuerraList.as_view(),
         name='guerra_list'),
 
         url(r'^lligues/$',
-        ListView.as_view(
-            queryset=Lligue.objects.all(),
-            context_object_name='latest_lliga_list',
-            template_name='ClashofClans/lliga_list.html'),
+        views.LligaList.as_view(),
         name='lliga_list'),
 
         url(r'^premis/$',
-        ListView.as_view(
-            queryset=PremiLligue.objects.all(),
-            context_object_name='latest_premi_list',
-            template_name='ClashofClans/premi_list.html'),
+        views.PremiList.as_view(),
         name='premi_list'),
 
 
@@ -189,3 +178,7 @@ urlpatterns = patterns('',
         name='premiLliga_edit'),
 
 )
+
+
+#RESTful API
+

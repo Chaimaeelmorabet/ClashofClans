@@ -2,7 +2,8 @@ from django.contrib.auth.models import User, Group
 from ClashofClans.models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
 from rest_framework import serializers
 from rest_framework.fields import CharField
-
+from rest_framework.relations import HyperlinkedRelatedField, HyperlinkedIdentityField
+from rest_framework.serializers import HyperlinkedModelSerializer
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -16,10 +17,12 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'name')
 
 class CiutatSerializer(serializers.HyperlinkedModelSerializer):
+    jugador = CharField(read_only=True)
+
     class Meta:
         model = Ciutat
         fields = ('id','jugador')
-        jugador = CharField(read_only=True)
+
 
 class ClanSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

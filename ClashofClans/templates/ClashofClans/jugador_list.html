@@ -10,7 +10,7 @@
     {% for jugador in latest_jugador_list %}
         <li><a href="{% url 'ClashofClans:jugador_detail' jugador.id %}">{{ jugador.nom }}</a></li>
     {% empty %}
-        <li>Sorry, no jugadors registered yet.</li>
+        <li>Sorry, no players registered yet.</li>
     {% endfor %}
 </ul>
 
