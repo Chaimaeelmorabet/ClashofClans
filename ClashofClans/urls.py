@@ -21,8 +21,8 @@ router.register(r'lligues', views.LligueViewSet)
 router.register(r'premilligues', views.PremiLligueViewSet)
 
 urlpatterns = patterns('',
-    url(r'^api/', include(router.urls)),
-    url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/$', include(router.urls)),
+    url(r'^api-auth/$', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^$', views.mainpage, name='home'),
 
     url(r'^ciutats/$',
@@ -190,6 +190,6 @@ urlpatterns = patterns('',
 
 )
 
-urlpatterns = format_suffix_patterns(urlpatterns, allowed=['api','json', 'xml'])
+#urlpatterns = format_suffix_patterns(urlpatterns, allowed=['api','json', 'xml'])
 #RESTful API
 
