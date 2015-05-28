@@ -2,6 +2,7 @@ from django.conf.urls import patterns, url, include
 from django.utils import timezone
 from django.views.generic import DetailView, ListView, UpdateView
 from rest_framework import routers
+from rest_framework.urlpatterns import format_suffix_patterns
 
 from ClashofClans.models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
 from forms import CiutatForm,JugadorForm, ClanForm, GuerraClanForm, LligaForm, PremiLligaForm
@@ -79,6 +80,10 @@ urlpatterns = patterns('',
         JugadorDetail.as_view(),
         name='jugador_detail'),
 
+    url(r'^jugadors/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
+        JugadorDetail.as_view(),
+        name='jugador_detail_conneg'),
+
     # Create a jugador: /ClashofClans/jugadors/create/
     url(r'^jugadors/create/$',
         JugadorCreate.as_view(),
@@ -98,6 +103,9 @@ urlpatterns = patterns('',
     url(r'^clans/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
         ClanDetail.as_view(),
         name='clan_detail'),
+    url(r'^clans/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
+        ClanDetail.as_view(),
+        name='clan_detail_conneg'),
 
     # Create a clan: /ClashofClans/clan/create/
     url(r'^clans/create/$',
@@ -117,6 +125,9 @@ urlpatterns = patterns('',
     url(r'^guerraClan/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
         GuerraClanDetail.as_view(),
         name='guerraClan_detail'),
+    url(r'^guerraClan/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
+        GuerraClanDetail.as_view(),
+        name='guerraClan_detail_conneg'),
 
     # Create a clan: /ClashofClans/guerraClan/create/
     url(r'^guerraClan/create/$',
@@ -137,6 +148,9 @@ urlpatterns = patterns('',
     url(r'^lliga/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
         LligaDetail.as_view(),
         name='lliga_detail'),
+    url(r'^lliga/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
+        LligaDetail.as_view(),
+        name='lliga_detail_conneg'),
 
     # Create a clan: /ClashofClans/clan/create/
     url(r'^lliga/create/$',
@@ -157,13 +171,10 @@ urlpatterns = patterns('',
     url(r'^premiLliga/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
         PremiLligaDetail.as_view(),
         name='premiLliga_detail'),
-        # Edit jugador details, ex: /ClashofClans/jugadors/1/edit/
-    url(r'^jugadors/(?P<pk>\d+)/edit/$',
-        UpdateView.as_view(
-            model=Jugador,
-            form_class=JugadorForm,
-            template_name='ClashofClans/form.html'),
-        name='jugador_edit'),
+    url(r'^premiLliga/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
+        PremiLligaDetail.as_view(),
+        name='premiLliga_detail_conneg'),
+
 
     # Create a clan: /ClashofClans/clan/create/
     url(r'^premiLliga/create/$',
@@ -179,6 +190,6 @@ urlpatterns = patterns('',
 
 )
 
-
+urlpatterns = format_suffix_patterns(urlpatterns, allowed=['api','json', 'xml'])
 #RESTful API
 

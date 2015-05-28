@@ -2,7 +2,7 @@
 from django.views.generic import DetailView
 from django.template.loader import get_template
 from django.views.generic.edit import CreateView
-from ClashofClans import serializers
+from ClashofClans import serializer
 from rest_framework import viewsets
 from rest_framework import generics, permissions
 from django.template import Context
@@ -20,7 +20,7 @@ from django.views.generic.edit import CreateView, UpdateView
 
 from models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
 from forms import CiutatForm,JugadorForm, ClanForm, GuerraClanForm, LligaForm, PremiLligaForm
-from ClashofClans import serializers
+from ClashofClans import serializer
 
 class ConnegResponseMixin(TemplateResponseMixin):
     def render_json_object_response(self, objects, **kwargs):
@@ -76,7 +76,7 @@ class CiutatList(ListView, ConnegResponseMixin):
     template_name='ClashofClans/ciutat_list.html'
 
 
-class JugadorDetail(DetailView):
+class JugadorDetail(DetailView, ConnegResponseMixin):
     model = Jugador
     template_name = 'ClashofClans/jugador_detail.html'
 
@@ -201,42 +201,42 @@ class CiutatViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
     queryset = Ciutat.objects.all()
-    serializer_class = serializers.CiutatSerializer
+    serializer_class = serializer.CiutatSerializer
 
 class ClanViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
     queryset = Clan.objects.all()
-    serializer_class = serializers.ClanSerializer
+    serializer_class = serializer.ClanSerializer
 
 class GuerraViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
     queryset = Guerra.objects.all()
-    serializer_class = serializers.GuerraSerializer
+    serializer_class = serializer.GuerraSerializer
 
 class JugadorViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
     queryset = Jugador.objects.all()
-    serializer_class = serializers.JugadorSerializer
+    serializer_class = serializer.JugadorSerializer
 
 class LligueViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
     queryset = Lligue.objects.all()
-    serializer_class = serializers.LligueSerializer
+    serializer_class = serializer.LligueSerializer
 
 class PremiLligueViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
     queryset = PremiLligue.objects.all()
-    serializer_class = serializers.PremiLligue
+    serializer_class = serializer.PremiLligue
 
 #RESTful API views
 
