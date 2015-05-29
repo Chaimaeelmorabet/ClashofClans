@@ -10,7 +10,7 @@
     {% for premi in latest_premi_list %}
         <li><a href="{% url 'ClashofClans:premiLliga_detail' premi.id %}">{{ premi.id }}</a></li>
     {% empty %}
-        <li>Sorry, no cities registered yet.</li>
+        <li>Sorry, no prize registered yet.</li>
     {% endfor %}
 </ul>
 

@@ -57,7 +57,7 @@ def mainpage(request):
     output = template.render(variables)
     return HttpResponse(output)
 
-class CiutatDetail(DetailView):
+class CiutatDetail(DetailView, ConnegResponseMixin):
     model = Ciutat
     template_name = 'ClashofClans/ciutat_detail.html'
 
@@ -107,7 +107,7 @@ class JugadorList(ListView, ConnegResponseMixin):
     template_name='ClashofClans/jugador_list.html'
 
 
-class ClanDetail(DetailView):
+class ClanDetail(DetailView, ConnegResponseMixin):
     model = Clan
     template_name = 'ClashofClans/clan_detail.html'
 
@@ -131,7 +131,7 @@ class ClanList(ListView, ConnegResponseMixin):
     context_object_name='latest_clan_list'
     template_name='ClashofClans/clan_list.html'
 
-class GuerraClanDetail(DetailView):
+class GuerraClanDetail(DetailView, ConnegResponseMixin):
     model = Guerra
     template_name = 'ClashofClans/guerraClan_detail.html'
 
@@ -154,7 +154,7 @@ class GuerraList(ListView, ConnegResponseMixin):
     context_object_name='latest_guerra_list'
     template_name='ClashofClans/guerra_list.html'
 
-class LligaDetail(DetailView):
+class LligaDetail(DetailView, ConnegResponseMixin):
     model = Lligue
     template_name = 'ClashofClans/lliga_detail.html'
 
@@ -178,7 +178,7 @@ class LligaList(ListView, ConnegResponseMixin):
     context_object_name='latest_lliga_list'
     template_name='ClashofClans/lliga_list.html'
 
-class PremiLligaDetail(DetailView):
+class PremiLligaDetail(DetailView, ConnegResponseMixin):
     model = PremiLligue
     template_name = 'ClashofClans/premiLliga_detail.html'
 

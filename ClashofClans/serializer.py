@@ -30,14 +30,14 @@ class ClanSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('nom', 'id', 'punts', 'tipus', 'trofeusBase', 'ubicacio')
 
 class GuerraSerializer(serializers.HyperlinkedModelSerializer):
-    clan1 = CharField(write_only=True)
-    clan2 = CharField(write_only=True)
+    clan1 = CharField(read_only=True)
+    clan2 = CharField(read_only=True)
     class Meta:
         model = Guerra
         fields = ('id', 'clan1', 'clan2')
 
 class JugadorSerializer(serializers.HyperlinkedModelSerializer):
-    clan = CharField(write_only=True)
+    clan = CharField(read_only=True)
 
     class Meta:
         model = Jugador

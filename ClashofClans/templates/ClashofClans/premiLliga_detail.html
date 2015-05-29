@@ -1,25 +1,23 @@
 {% extends "ClashofClans/base.html" %}
 
-{% block title %}Premi - {{ premiLliga.id }}{% endblock %}
+{% block title %}Premi Lliga - {{ premilligue.id }}{% endblock %}
 
 {% block content %}
 
-<span vocab="http://schema.org/" typeof="Jugador">
+<span vocab="http://schema.org/" typeof="PremiLligue">
 <h1>
-    <span property="id">{{ premiLliga.id }}</span>
-    {% if user == premiLliga.user %}
-        (<a href="{% url 'ClashofClans:Premi_edit' premiLliga.id %}">edit</a>)
+    <span  property="id">Premi Lliga {{ premilligue.id }}</span>
+    {% if user == premilligue.user %}
+        (<a href="{% url 'ClashofClans:guerraClan_edit' premilligue.id %}">edit</a>)
     {% endif %}
 </h1>
 
 <h2>Detalls: </h2>
 
 <p>
-    Or:     {{ premiLliga.oro }} <br/>
-    Elixir:      {{ premiLliga.elixir }} <br/>
-    Elixir Negre:       {{ premiLliga.elixirNegre }} <br/>
-
-
+    Or: {{ premilligue.oro }} <br/>
+    Elixir: {{ premilligue.elixir }} <br/>
+    Elixir Negre: {{ premilligue.elixirNegre }} <br/>
 </p>
 
 </span>

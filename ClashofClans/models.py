@@ -15,7 +15,7 @@ class Clan(models.Model):
     def __unicode__(self):
         return self.nom
     def get_absolute_url(self):
-        return reverse('ClashofClans:ciutat_list', kwargs={})
+        return reverse('ClashofClans:clan_list', kwargs={})
 
 class PremiLligue(models.Model):
     id = models.AutoField(primary_key=True)
@@ -26,7 +26,7 @@ class PremiLligue(models.Model):
     def __unicode__(self):
         return str(self.nom)
     def get_absolute_url(self):
-        return reverse('ClashofClans:ciutat_list', kwargs={})
+        return reverse('ClashofClans:premi_list', kwargs={})
 
 class Lligue(models.Model):
     id = models.AutoField(primary_key=True)
@@ -35,7 +35,7 @@ class Lligue(models.Model):
     def __unicode__(self):
         return str(self.id)
     def get_absolute_url(self):
-        return reverse('ClashofClans:ciutat_list', kwargs={})
+        return reverse('ClashofClans:lliga_list', kwargs={})
 
 class Jugador(models.Model):
     nom = models.CharField(max_length=60)
@@ -46,7 +46,7 @@ class Jugador(models.Model):
     def __unicode__(self):
         return self.nom
     def get_absolute_url(self):
-        return reverse('ClashofClans:ciutat_list', kwargs={})
+        return reverse('ClashofClans:jugador_list', kwargs={})
 
 class Guerra(models.Model):
     id = models.AutoField(primary_key=True)
@@ -55,7 +55,7 @@ class Guerra(models.Model):
     def __unicode__(self):
         str(self.id)
     def get_absolute_url(self):
-        return reverse('ClashofClans:ciutat_list', kwargs={})
+        return reverse('ClashofClans:guerra_list', kwargs={})
 
 
 class Ciutat(models.Model):

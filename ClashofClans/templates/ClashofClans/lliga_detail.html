@@ -1,23 +1,23 @@
 {% extends "ClashofClans/base.html" %}
 
-{% block title %}Lliga - {{ lliga.id }}{% endblock %}
+{% block title %}Lliga - {{ lligue.id }}{% endblock %}
 
 {% block content %}
 
 <span vocab="http://schema.org/" typeof="Lliga">
 <h1>
-    <span property="id">Lliga {{ lliga.id }}</span>
+    <span property="id">Lliga {{ lligue.id }}</span>
     {% if user == lliga.user %}
-        (<a href="{% url 'ClashofClans:Lliga_edit' lliga.id %}">edit</a>)
+        (<a href="{% url 'ClashofClans:Lliga_edit' lligue.id %}">edit</a>)
     {% endif %}
 </h1>
 
 <h2>Detalls: </h2>
 
 <p>
-    ID de la lliga: {{lliga.id }}  <br/>
-    Premi: {{ lliga.premi }} <br/>
-    Copes: {{ lliga.numCopes }} <br/>
+    ID de la lliga: {{lligue.id }}  <br/>
+    Premi: {{ lligue.premi }} <br/>
+    Copes: {{ lligue.numCopes }} <br/>
 
 
 </p>
