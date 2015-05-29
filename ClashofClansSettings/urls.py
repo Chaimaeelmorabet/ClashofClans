@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     (r'^ClashofClans/',  include('ClashofClans.urls',  namespace='ClashofClans')),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^', mainpage, name='home'),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
 
 )

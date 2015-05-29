@@ -8,13 +8,13 @@ from rest_framework.serializers import HyperlinkedModelSerializer
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'groups')
+        fields = ('username', 'email', 'groups')
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
-        fields = ('url', 'name')
+        fields = ('name')
 
 class CiutatSerializer(serializers.HyperlinkedModelSerializer):
     jugador = CharField(read_only=True)
@@ -30,11 +30,15 @@ class ClanSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('nom', 'id', 'punts', 'tipus', 'trofeusBase', 'ubicacio')
 
 class GuerraSerializer(serializers.HyperlinkedModelSerializer):
+    clan1 = CharField(write_only=True)
+    clan2 = CharField(write_only=True)
     class Meta:
         model = Guerra
         fields = ('id', 'clan1', 'clan2')
 
 class JugadorSerializer(serializers.HyperlinkedModelSerializer):
+    clan = CharField(write_only=True)
+
     class Meta:
         model = Jugador
         fields = ('nom', 'id', 'nivell', 'lliga', 'clan')

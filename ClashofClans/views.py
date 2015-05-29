@@ -1,22 +1,18 @@
 # Create your views here.
-from django.views.generic import DetailView
+
 from django.template.loader import get_template
-from django.views.generic.edit import CreateView
-from ClashofClans import serializer
+
 from rest_framework import viewsets
-from rest_framework import generics, permissions
+from rest_framework import permissions
 from django.template import Context
 from django.core import serializers
-from django.utils import timezone
-from django.contrib.auth.decorators import login_required
-from django.core import urlresolvers
-from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import get_object_or_404
-from django.utils.decorators import method_decorator
-from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic import DetailView, ListView
 from django.views.generic.base import TemplateResponseMixin
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
 from forms import CiutatForm,JugadorForm, ClanForm, GuerraClanForm, LligaForm, PremiLligaForm
@@ -41,6 +37,16 @@ class ConnegResponseMixin(TemplateResponseMixin):
                 return self.render_xml_object_response(objects=objects)
         else:
             return super(ConnegResponseMixin, self).render_to_response(context)
+
+class LoginRequiredMixin(object):
+    """Ensures that user must be authenticated in order to access view."""
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+
+def logout_page(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
 def mainpage(request):
     template = get_template('ClashofClans/main.html')
