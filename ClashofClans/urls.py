@@ -1,16 +1,14 @@
 from django.conf.urls import patterns, url, include
-from django.utils import timezone
 from django.views.generic import DetailView, ListView, UpdateView
 from rest_framework import routers
-from rest_framework.urlpatterns import format_suffix_patterns
-
+from django.contrib import admin
 from ClashofClans.models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
 from forms import CiutatForm,JugadorForm, ClanForm, GuerraClanForm, LligaForm, PremiLligaForm
 from views import CiutatCreate,CiutatDetail,JugadorCreate,JugadorDetail, ClanCreate, GuerraClanCreate, LligaCreate, PremiLligaCreate, ClanDetail,\
     GuerraClanDetail, LligaDetail,PremiLligaDetail
 
 from ClashofClans import views
-
+admin.autodiscover()
 
 router = routers.DefaultRouter()
 router.register(r'ciutats', views.CiutatViewSet)
@@ -21,37 +19,16 @@ router.register(r'lligues', views.LligueViewSet)
 router.register(r'premilligues', views.PremiLligueViewSet)
 
 urlpatterns = patterns('',
-    url(r'^api/$', include(router.urls)),
-    url(r'^api-auth/$', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^$', views.mainpage, name='home'),
 
-    url(r'^ciutats/$',
-        views.CiutatList.as_view(),
-        name='ciutats_list'),
-
-        url(r'^jugadors/$',
-        views.JugadorList.as_view(),
-        name='jugador_list'),
-
-        url(r'^clans/$',
-        views.ClanList.as_view(),
-        name='clan_list'),
-
-        url(r'^guerres/$',
-        views.GuerraList.as_view(),
-        name='guerra_list'),
-
-        url(r'^lligues/$',
-        views.LligaList.as_view(),
-        name='lliga_list'),
-
-        url(r'^premis/$',
-        views.PremiList.as_view(),
-        name='premi_list'),
-
-
-
-    
+    url(r'^ciutats/$', views.CiutatList.as_view(), name='ciutat_list'),
+    url(r'^jugadors/$', views.JugadorList.as_view(), name='jugador_list'),
+    url(r'^clans/$', views.ClanList.as_view(), name='clan_list'),
+    url(r'^guerres/$', views.GuerraList.as_view(), name='guerra_list'),
+    url(r'^lligues/$', views.LligaList.as_view(), name='lliga_list'),
+    url(r'^premis/$', views.PremiList.as_view(), name='premi_list'),
 
     #  *********************    Ciutat    ************************
 
@@ -59,6 +36,10 @@ urlpatterns = patterns('',
     url(r'^ciutats/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
         CiutatDetail.as_view(),
         name='ciutat_detail'),
+
+    url(r'^ciutats/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
+        CiutatDetail.as_view(),
+        name='ciutat_detail_conneg'),
 
     # Create a ciutat: /ClashofClans/ciutats/create/
     url(r'^ciutats/create/$',
