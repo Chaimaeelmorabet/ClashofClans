@@ -32,6 +32,7 @@ class Lligue(models.Model):
     id = models.AutoField(primary_key=True)
     premi = models.ForeignKey(PremiLligue, null=True)
     numCopes = models.IntegerField(default=0)
+
     def __unicode__(self):
         return str(self.id)
     def get_absolute_url(self):

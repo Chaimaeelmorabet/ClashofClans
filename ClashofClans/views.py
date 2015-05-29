@@ -196,9 +196,10 @@ class PremiLligaCreate(CreateView):
         return super(PremiLligaCreate, self).form_valid(form)
 
 class PremiList(ListView, ConnegResponseMixin):
+    model = PremiLligue
     queryset=PremiLligue.objects.all()
     context_object_name='latest_premi_list'
-    template_name='ClashofClans/premi_list.html'
+    template_name='ClashofClans/premiLligues_list.html'
 
 #View Set FRAMEWORK
 
@@ -242,7 +243,7 @@ class PremiLligueViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
     queryset = PremiLligue.objects.all()
-    serializer_class = serializer.PremiLligue
+    serializer_class = serializer.PremiLligueSerializer
 
 #RESTful API views
 

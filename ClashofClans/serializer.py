@@ -38,12 +38,14 @@ class GuerraSerializer(serializers.HyperlinkedModelSerializer):
 
 class JugadorSerializer(serializers.HyperlinkedModelSerializer):
     clan = CharField(read_only=True)
+    lliga = CharField(read_only=True)
 
     class Meta:
         model = Jugador
         fields = ('nom', 'id', 'nivell', 'lliga', 'clan')
 
 class LligueSerializer(serializers.HyperlinkedModelSerializer):
+    premi = CharField(read_only=True)
     class Meta:
         model = Lligue
         fields = ('id', 'premi', 'numCopes')

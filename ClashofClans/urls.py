@@ -163,7 +163,7 @@ urlpatterns = patterns('',
         PremiLligaCreate.as_view(),
         name='premi_create'),
 
-    # Edit PremiLliga details, ex: /ClashofClans/PremiLliga/1/edit/
+        # Edit PremiLliga details, ex: /ClashofClans/PremiLliga/1/edit/
     url(r'^premiLliga/(?P<pk>\d+)/edit/$',
         UpdateView.as_view(
             model=PremiLligue,
