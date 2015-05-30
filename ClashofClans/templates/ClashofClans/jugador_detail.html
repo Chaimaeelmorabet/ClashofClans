@@ -9,6 +9,7 @@
     <span property="id">{{ jugador.nom }}</span>
     {% if user == jugador.user %}
         (<a href="{% url 'ClashofClans:jugador_edit' jugador.id %}">edit</a>)
+        (<a href="{% url 'ClashofClans:jugador_delete' jugador.id %}">delete</a>)
     {% endif %}
 </h1>
 

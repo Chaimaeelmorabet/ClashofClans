@@ -1,13 +1,11 @@
 from django.conf.urls import patterns, url, include
-from django.views.generic import DetailView, ListView, UpdateView
+from django.views.generic import UpdateView
 from rest_framework import routers
 from django.contrib import admin
 from ClashofClans.models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
 from forms import CiutatForm,JugadorForm, ClanForm, GuerraClanForm, LligaForm, PremiLligaForm
-from views import CiutatCreate,CiutatDetail,JugadorCreate,JugadorDetail, ClanCreate, GuerraClanCreate, LligaCreate, PremiLligaCreate, ClanDetail,\
-    GuerraClanDetail, LligaDetail,PremiLligaDetail
-
 from ClashofClans import views
+
 admin.autodiscover()
 
 router = routers.DefaultRouter()
@@ -34,17 +32,23 @@ urlpatterns = patterns('',
 
     # Ciutat details, ex.: /ClashofClans/ciutats/1/
     url(r'^ciutats/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
-        CiutatDetail.as_view(),
+        views.CiutatDetail.as_view(),
         name='ciutat_detail'),
 
+    url(r'^ciutats/(?P<pk>\d+)/delete/$',
+        views.CiutatDelete.as_view(),
+        name='ciutat_delete'),
+
     url(r'^ciutats/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
-        CiutatDetail.as_view(),
+        views.CiutatDetail.as_view(),
         name='ciutat_detail_conneg'),
 
     # Create a ciutat: /ClashofClans/ciutats/create/
     url(r'^ciutats/create/$',
-        CiutatCreate.as_view(),
+        views.CiutatCreate.as_view(),
         name='ciutat_create'),
+
+
 
     # Edit ciutat details, ex: /ClashofClans/ciutats/1/edit/
     url(r'^ciutats/(?P<pk>\d+)/edit/$',
@@ -58,16 +62,20 @@ urlpatterns = patterns('',
 
     # jugador details, ex.: /ClashofClans/jugador/1/
     url(r'^jugadors/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
-        JugadorDetail.as_view(),
+        views.JugadorDetail.as_view(),
         name='jugador_detail'),
 
+    url(r'^jugadors/(?P<pk>\d+)/delete/$',
+        views.JugadorDelete.as_view(),
+        name='jugador_delete'),
+
     url(r'^jugadors/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
-        JugadorDetail.as_view(),
+        views.JugadorDetail.as_view(),
         name='jugador_detail_conneg'),
 
     # Create a jugador: /ClashofClans/jugadors/create/
     url(r'^jugadors/create/$',
-        JugadorCreate.as_view(),
+        views.JugadorCreate.as_view(),
         name='jugador_create'),
 
     # Edit jugador details, ex: /ClashofClans/jugadors/1/edit/
@@ -82,15 +90,20 @@ urlpatterns = patterns('',
 
     # Clan details, ex.: /ClashofClans/clan/1/
     url(r'^clans/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
-        ClanDetail.as_view(),
+        views.ClanDetail.as_view(),
         name='clan_detail'),
+
+    url(r'^clans/(?P<pk>\d+)/delete/$',
+        views.ClanDelete.as_view(),
+        name='clan_delete'),
+
     url(r'^clans/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
-        ClanDetail.as_view(),
+        views.ClanDetail.as_view(),
         name='clan_detail_conneg'),
 
     # Create a clan: /ClashofClans/clan/create/
     url(r'^clans/create/$',
-        ClanCreate.as_view(),
+        views.ClanCreate.as_view(),
         name='clan_create'),
 
     # Edit clan details, ex: /ClashofClans/clan/1/edit/
@@ -105,15 +118,20 @@ urlpatterns = patterns('',
 
     # GuerraClan details, ex.: /ClashofClans/guerraClan/1/
     url(r'^guerraClan/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
-        GuerraClanDetail.as_view(),
+        views.GuerraClanDetail.as_view(),
         name='guerraClan_detail'),
+
+    url(r'^guerraClan/(?P<pk>\d+)/delete/$',
+        views.GuerraDelete.as_view(),
+        name='guerraClan_delete'),
+
     url(r'^guerraClan/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
-        GuerraClanDetail.as_view(),
+        views.GuerraClanDetail.as_view(),
         name='guerraClan_detail_conneg'),
 
     # Create a GuerraClan: /ClashofClans/guerraClan/create/
     url(r'^guerraClan/create/$',
-        GuerraClanCreate.as_view(),
+        views.GuerraClanCreate.as_view(),
         name='guerraclan_create'),
 
     # Edit guerraClan details, ex: /ClashofClans/guerraClan/1/edit/
@@ -128,15 +146,20 @@ urlpatterns = patterns('',
 
     # Lliga details, ex.: /ClashofClans/lliga/1/
     url(r'^lliga/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
-        LligaDetail.as_view(),
+        views.LligaDetail.as_view(),
         name='lliga_detail'),
+
+    url(r'^lliga/(?P<pk>\d+)/delete/$',
+        views.LligaDelete.as_view(),
+        name='lliga_delete'),
+
     url(r'^lliga/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
-        LligaDetail.as_view(),
+        views.LligaDetail.as_view(),
         name='lliga_detail_conneg'),
 
     # Create a Lliga: /ClashofClans/lliga/create/
     url(r'^lliga/create/$',
-        LligaCreate.as_view(),
+        views.LligaCreate.as_view(),
         name='lliga_create'),
 
     # Edit Lliga details, ex: /ClashofClans/lliga/1/edit/
@@ -151,16 +174,21 @@ urlpatterns = patterns('',
 
     # PremiLliga details, ex.: /ClashofClans/PremiLliga/1/
     url(r'^premiLliga/(?P<pk>\d+)/$', #ClashofClans/pk=1/ si posem el pk, si nomes posem el d+ ClashofClans/1/. Posar nom ens pot servir per a un futur fer distincions
-        PremiLligaDetail.as_view(),
+        views.PremiLligaDetail.as_view(),
         name='premiLliga_detail'),
+
+    url(r'^premiLliga/(?P<pk>\d+)/delete/$',
+        views.PremiLligaDelete.as_view(),
+        name='premiLliga_delete'),
+
     url(r'^premiLliga/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
-        PremiLligaDetail.as_view(),
+        views.PremiLligaDetail.as_view(),
         name='premiLliga_detail_conneg'),
 
 
     # Create a PremiLliga: /ClashofClans/PremiLliga/create/
     url(r'^premiLliga/create/$',
-        PremiLligaCreate.as_view(),
+        views.PremiLligaCreate.as_view(),
         name='premi_create'),
 
         # Edit PremiLliga details, ex: /ClashofClans/PremiLliga/1/edit/
@@ -173,6 +201,4 @@ urlpatterns = patterns('',
 
 )
 
-#urlpatterns = format_suffix_patterns(urlpatterns, allowed=['api','json', 'xml'])
-#RESTful API
 

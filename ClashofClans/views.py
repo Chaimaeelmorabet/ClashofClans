@@ -14,7 +14,7 @@ from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, DeleteView
 from django.views.generic.base import TemplateResponseMixin
 from django.views.generic.edit import CreateView, UpdateView
 
@@ -76,6 +76,12 @@ class CiutatDetail(DetailView, ConnegResponseMixin):
         context = super(CiutatDetail, self).get_context_data(**kwargs)
         return context
 
+
+class CiutatDelete(LoginRequiredMixin,DeleteView):
+    model = Ciutat
+    template_name = 'ClashofClans/delete.html'
+    success_url = '/ClashofClans/ciutats/'
+
 class CiutatCreate(LoginRequiredMixin, CreateView):
     model = Ciutat
     template_name = 'ClashofClans/form.html'
@@ -100,6 +106,17 @@ class JugadorDetail(DetailView, ConnegResponseMixin):
     def get_context_data(self, **kwargs):
         context = super(JugadorDetail, self).get_context_data(**kwargs)
         return context
+
+class JugadorDelete(LoginRequiredMixin,DeleteView):
+    model = Jugador
+    template_name = 'ClashofClans/delete.html'
+    template = get_template(template_name)
+    variables = Context({
+    'titlehead': 'Delete Jugador',
+    })
+    output = template.render(variables)
+    HttpResponse(output)
+    success_url = '/ClashofClans/jugadors/'
 
 class JugadorCreate(LoginRequiredMixin, CreateView):
     model = Jugador
@@ -126,6 +143,11 @@ class ClanDetail(DetailView, ConnegResponseMixin):
         context = super(ClanDetail, self).get_context_data(**kwargs)
         return context
 
+class ClanDelete(LoginRequiredMixin,DeleteView):
+    model = Clan
+    template_name = 'ClashofClans/delete.html'
+    success_url = '/ClashofClans/clans/'
+
 class ClanCreate(LoginRequiredMixin, CreateView):
     model = Clan
     template_name = 'ClashofClans/form.html'
@@ -150,6 +172,12 @@ class GuerraClanDetail(DetailView, ConnegResponseMixin):
         context = super(GuerraClanDetail, self).get_context_data(**kwargs)
         return context
 
+
+class GuerraDelete(LoginRequiredMixin,DeleteView):
+    model = Guerra
+    template_name = 'ClashofClans/delete.html'
+    success_url = '/ClashofClans/guerres/'
+
 class GuerraClanCreate(LoginRequiredMixin, CreateView):
     model = Guerra
     template_name = 'ClashofClans/form.html'
@@ -172,6 +200,12 @@ class LligaDetail(DetailView, ConnegResponseMixin):
     def get_context_data(self, **kwargs):
         context = super(LligaDetail, self).get_context_data(**kwargs)
         return context
+
+
+class LligaDelete(LoginRequiredMixin,DeleteView):
+    model = Lligue
+    template_name = 'ClashofClans/delete.html'
+    success_url = '/ClashofClans/lligues/'
 
 class LligaCreate(LoginRequiredMixin, CreateView):
     model = Lligue
@@ -196,6 +230,12 @@ class PremiLligaDetail(DetailView, ConnegResponseMixin):
     def get_context_data(self, **kwargs):
         context = super(PremiLligaDetail, self).get_context_data(**kwargs)
         return context
+
+
+class PremiLligaDelete(LoginRequiredMixin,DeleteView):
+    model = PremiLligue
+    template_name = 'ClashofClans/delete.html'
+    success_url = '/ClashofClans/premis/'
 
 class PremiLligaCreate(LoginRequiredMixin, CreateView):
     model = PremiLligue

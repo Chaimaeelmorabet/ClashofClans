@@ -9,6 +9,7 @@
     <span property="id">Lliga {{ lligue.id }}</span>
     {% if user == lligue.user %}
         (<a href="{% url 'ClashofClans:lliga_edit' lligue.id %}">edit</a>)
+        (<a href="{% url 'ClashofClans:lliga_delete' lligue.id %}">delete</a>)
     {% endif %}
 </h1>
 
