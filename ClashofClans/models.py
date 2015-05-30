@@ -40,6 +40,7 @@ class Lligue(models.Model):
 
 class Jugador(models.Model):
     nom = models.CharField(max_length=60)
+    pais = models.TextField(blank=True, null=True)
     id = models.AutoField(primary_key=True)
     nivell= models.IntegerField(default=0)
     lliga = models.ForeignKey(Lligue, null=True,blank=True)

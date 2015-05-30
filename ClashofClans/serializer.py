@@ -42,7 +42,7 @@ class JugadorSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Jugador
-        fields = ('nom', 'id', 'nivell', 'lliga', 'clan')
+        fields = ('nom', 'pais', 'id', 'nivell', 'lliga', 'clan')
 
 class LligueSerializer(serializers.HyperlinkedModelSerializer):
     premi = CharField(read_only=True)

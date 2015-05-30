@@ -7,7 +7,7 @@
     <script>
         $(function() {
             $.getJSON("{% static "countries.json" %}", {}, function (countries) {
-                $("#id_country").autocomplete({
+                $("#id_pais").autocomplete({
                     source: countries
                 });
             });
@@ -21,7 +21,7 @@
                             featureClass: "P",
                             maxRows: 10,
                             name_startsWith: request.term,
-                            username: "demo"
+                            username: "patata"
                         },
                         success: function( data ) {
                             response( $.map( data.geonames, function( item ) {
