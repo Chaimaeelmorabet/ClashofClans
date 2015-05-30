@@ -5,14 +5,18 @@ from django.template.loader import get_template
 from rest_framework import viewsets
 from rest_framework import permissions
 from django.template import Context
+from django.contrib.auth import logout
+
 from django.core import serializers
+from django.contrib.auth.decorators import login_required
+from django.core import urlresolvers
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import get_object_or_404
+from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView
 from django.views.generic.base import TemplateResponseMixin
-from django.views.generic.edit import CreateView
-from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+from django.views.generic.edit import CreateView, UpdateView
 
 from models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
 from forms import CiutatForm,JugadorForm, ClanForm, GuerraClanForm, LligaForm, PremiLligaForm
@@ -44,6 +48,13 @@ class LoginRequiredMixin(object):
     def dispatch(self, *args, **kwargs):
         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
+class CheckIsOwnerMixin(object):
+    def get_object(self, *args, **kwargs):
+        obj = super(CheckIsOwnerMixin, self).get_object(*args, **kwargs)
+        if not obj.user == self.request.user:
+            raise PermissionDenied
+        return obj
+
 def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
@@ -65,7 +76,7 @@ class CiutatDetail(DetailView, ConnegResponseMixin):
         context = super(CiutatDetail, self).get_context_data(**kwargs)
         return context
 
-class CiutatCreate(CreateView):
+class CiutatCreate(LoginRequiredMixin, CreateView):
     model = Ciutat
     template_name = 'ClashofClans/form.html'
     form_class = CiutatForm
@@ -90,7 +101,7 @@ class JugadorDetail(DetailView, ConnegResponseMixin):
         context = super(JugadorDetail, self).get_context_data(**kwargs)
         return context
 
-class JugadorCreate(CreateView):
+class JugadorCreate(LoginRequiredMixin, CreateView):
     model = Jugador
     template_name = 'ClashofClans/form.html'
     form_class = JugadorForm
@@ -115,7 +126,7 @@ class ClanDetail(DetailView, ConnegResponseMixin):
         context = super(ClanDetail, self).get_context_data(**kwargs)
         return context
 
-class ClanCreate(CreateView):
+class ClanCreate(LoginRequiredMixin, CreateView):
     model = Clan
     template_name = 'ClashofClans/form.html'
     form_class = ClanForm
@@ -139,7 +150,7 @@ class GuerraClanDetail(DetailView, ConnegResponseMixin):
         context = super(GuerraClanDetail, self).get_context_data(**kwargs)
         return context
 
-class GuerraClanCreate(CreateView):
+class GuerraClanCreate(LoginRequiredMixin, CreateView):
     model = Guerra
     template_name = 'ClashofClans/form.html'
     form_class = GuerraClanForm
@@ -162,7 +173,7 @@ class LligaDetail(DetailView, ConnegResponseMixin):
         context = super(LligaDetail, self).get_context_data(**kwargs)
         return context
 
-class LligaCreate(CreateView):
+class LligaCreate(LoginRequiredMixin, CreateView):
     model = Lligue
     template_name = 'ClashofClans/form.html'
     form_class = LligaForm
@@ -186,7 +197,7 @@ class PremiLligaDetail(DetailView, ConnegResponseMixin):
         context = super(PremiLligaDetail, self).get_context_data(**kwargs)
         return context
 
-class PremiLligaCreate(CreateView):
+class PremiLligaCreate(LoginRequiredMixin, CreateView):
     model = PremiLligue
     template_name = 'ClashofClans/form.html'
     form_class = PremiLligaForm
@@ -255,3 +266,11 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
         # Instance must have an attribute named `owner`.
         return obj.user == request.user
+
+
+class CheckIsOwnerMixin(object):
+    def get_object(self, *args, **kwargs):
+        obj = super(CheckIsOwnerMixin, self).get_object(*args, **kwargs)
+        if not obj.user == self.request.user:
+            raise PermissionDenied
+        return obj

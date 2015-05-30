@@ -7,12 +7,12 @@
     <script>
         $(function() {
             $.getJSON("{% static "countries.json" %}", {}, function (countries) {
-                $("#id_pais").autocomplete({
+                $("#id_ubicacio").autocomplete({
                     source: countries
                 });
             });
 
-            $("#id_city").autocomplete({
+            $("#id_localitzacio").autocomplete({
                 source: function( request, response ) {
                     $.ajax({
                         url: "http://ws.geonames.org/searchJSON",
@@ -21,7 +21,7 @@
                             featureClass: "P",
                             maxRows: 10,
                             name_startsWith: request.term,
-                            username: "patata"
+                            username: "cel2"
                         },
                         success: function( data ) {
                             response( $.map( data.geonames, function( item ) {
@@ -39,8 +39,6 @@
             select: function( event, ui ) {
                 if (ui.item) {
                     $("#id_stateOrProvince").val(ui.item.stateOrProvince);
-                    $("#id_country").val(ui.item.countryName);
-                    $("#id_zipCode").val("");
                 }
             }
             });
