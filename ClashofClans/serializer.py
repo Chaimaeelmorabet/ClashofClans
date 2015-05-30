@@ -1,56 +1,51 @@
+
 from django.contrib.auth.models import User, Group
 from ClashofClans.models import Ciutat,Clan,Guerra,Jugador,Lligue,PremiLligue
 from rest_framework import serializers
 from rest_framework.fields import CharField
 from rest_framework.relations import HyperlinkedRelatedField, HyperlinkedIdentityField
-from rest_framework.serializers import HyperlinkedModelSerializer
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'groups')
-
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = ('name')
 
 class CiutatSerializer(serializers.HyperlinkedModelSerializer):
-    jugador = CharField(read_only=True)
+    jugador = HyperlinkedRelatedField(read_only=True, view_name='ClashofClans:jugador_detail')
+    user = CharField(read_only=True)
 
     class Meta:
         model = Ciutat
-        fields = ('id','jugador')
+        fields = ('id','jugador', 'user')
 
 
 class ClanSerializer(serializers.HyperlinkedModelSerializer):
+    user = CharField(read_only=True)
     class Meta:
         model = Clan
-        fields = ('nom', 'id', 'punts', 'tipus', 'trofeusBase', 'ubicacio')
+        fields = ('nom', 'id', 'punts', 'tipus', 'trofeusBase', 'ubicacio', 'user')
 
 class GuerraSerializer(serializers.HyperlinkedModelSerializer):
-    clan1 = CharField(read_only=True)
-    clan2 = CharField(read_only=True)
+    clan1 = HyperlinkedIdentityField(read_only=True, view_name='ClashofClans:clan_detail')
+    clan2 = HyperlinkedRelatedField(read_only=True, view_name='ClashofClans:clan_detail')
+    user = CharField(read_only=True)
     class Meta:
         model = Guerra
-        fields = ('id', 'clan1', 'clan2')
+        fields = ('id', 'clan1', 'clan2', 'user')
 
 class JugadorSerializer(serializers.HyperlinkedModelSerializer):
-    clan = CharField(read_only=True)
-    lliga = CharField(read_only=True)
-
+    clan = HyperlinkedRelatedField(read_only=True, view_name='ClashofClans:clan_detail')
+    lliga = HyperlinkedRelatedField(read_only=True, view_name='ClashofClans:lliga_detail')
+    user = CharField(read_only=True)
     class Meta:
         model = Jugador
-        fields = ('nom', 'pais', 'id', 'nivell', 'lliga', 'clan')
+        fields = ('nom', 'localitzacio', 'id', 'nivell', 'lliga', 'clan', 'user')
 
 class LligueSerializer(serializers.HyperlinkedModelSerializer):
-    premi = CharField(read_only=True)
+    premi = HyperlinkedRelatedField(read_only=True, view_name='ClashofClans:premiLliga_detail')
+    user = CharField(read_only=True)
     class Meta:
         model = Lligue
         fields = ('id', 'premi', 'numCopes')
 
 class PremiLligueSerializer(serializers.HyperlinkedModelSerializer):
+    user = CharField(read_only=True)
     class Meta:
         model = PremiLligue
-        fields = ('id', 'nom', 'oro', 'elixir', 'elixirNegre')
+        fields = ('id', 'nom', 'oro', 'elixir', 'elixirNegre', 'user')
