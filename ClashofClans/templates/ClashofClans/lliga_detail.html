@@ -7,7 +7,7 @@
 <span vocab="http://schema.org/" typeof="Lliga">
 <h1>
     <span property="id">Lliga {{ lligue.id }}</span>
-    {% if user == lliga.user %}
+    {% if user == lligue.user %}
         (<a href="{% url 'ClashofClans:lliga_edit' lligue.id %}">edit</a>)
     {% endif %}
 </h1>

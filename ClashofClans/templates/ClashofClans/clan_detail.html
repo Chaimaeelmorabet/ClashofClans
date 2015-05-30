@@ -8,7 +8,7 @@
 <h1>
     <span property="id">{{ clan.id }}</span>
     {% if user == clan.user %}
-        (<a href="{% url 'ClashofClans:jugador_edit' clan.id %}">edit</a>)
+        (<a href="{% url 'ClashofClans:clan_edit' clan.id %}">edit</a>)
     {% endif %}
 </h1>
 
