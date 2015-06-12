@@ -6,12 +6,17 @@
 
 <span vocab="http://schema.org/" typeof="Ciutat">
 <h1>
-    <span property="id">{{ ciutat.id }}</span>
+    Ciutat <span property="id">{{ ciutat.id }}</span>
     {% if user == ciutat.user %}
         (<a href="{% url 'ClashofClans:ciutat_edit' ciutat.id %}">edit</a>)
         (<a href="{% url 'ClashofClans:ciutat_delete' ciutat.id %}">delete</a>)
     {% endif %}
 </h1>
+<h2>Detalls: </h2>
+
+<p>
+    Jugador: <span property="jugador">{{ ciutat.jugador }}</span>  <br/>
+</p>
 
 
 </span>
