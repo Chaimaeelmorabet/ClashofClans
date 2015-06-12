@@ -6,7 +6,7 @@
 
 <span vocab="http://schema.org/" typeof="Jugador">
 <h1>
-    <span property="id">{{ jugador.nom }}</span>
+    <span property="nom">{{ jugador.nom }}</span>
     {% if user == jugador.user %}
         (<a href="{% url 'ClashofClans:jugador_edit' jugador.id %}">edit</a>)
         (<a href="{% url 'ClashofClans:jugador_delete' jugador.id %}">delete</a>)
@@ -16,11 +16,11 @@
 <h2>Detalls: </h2>
 
 <p>
-    ID del jugador:                 {{jugador.id }}  <br/>
-    Localitzacio del jugador:       {{ jugador.localitzacio }} <br/>
-    Nivell del jugador:             {{ jugador.nivell }} <br/>
-    LLiga del jugador:              {{ jugador.lliga }} <br/>
-    Clan del Jugador:               {{ jugador.clan }} <br/>
+    ID del jugador:                 <span property="id">{{jugador.id }}</span>  <br/>
+    Localitzacio del jugador:       <span property="localització">{{ jugador.localitzacio }}</span> <br/>
+    Nivell del jugador:             <span property="nivell">{{ jugador.nivell }}</span> <br/>
+    LLiga del jugador:              <span property="lliga">{{ jugador.lliga }}</span> <br/>
+    Clan del Jugador:               <span property="clan">{{ jugador.clan }}</span> <br/>
 
 
 </p>
