@@ -8,7 +8,7 @@
 </h1>
 <ul>
     {% for clan in latest_clan_list %}
-        <li><a href="{% url 'ClashofClans:clan_detail' clan.id %}">{{ clan.id }}</a></li>
+        <li><a href="{% url 'ClashofClans:clan_detail' clan.id %}">{{ clan.nom }}</a></li>
     {% empty %}
         <li>Sorry, no clans registered yet.</li>
     {% endfor %}

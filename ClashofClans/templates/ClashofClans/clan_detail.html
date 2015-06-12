@@ -6,7 +6,7 @@
 
 <span vocab="http://schema.org/" typeof="Clan">
 <h1>
-    <span property="id">{{ clan.id }}</span>
+    <span property="nom">{{ clan.nom }}</span>
     {% if user == clan.user %}
         (<a href="{% url 'ClashofClans:clan_edit' clan.id %}">edit</a>)
         (<a href="{% url 'ClashofClans:clan_delete' clan.id %}">delete</a>)
@@ -16,9 +16,11 @@
 <h2>Detalls: </h2>
 
 <p>
-    ID Clan: {{clan.id }}  <br/>
-
-
+    ID Clan:            <span property="id">{{clan.id }}</span>  <br/>
+    Punts Clan:         <span property="punts">{{clan.punts }}</span>  <br/>
+    Tipus Clan:         <span property="tipus">{{clan.tipus }}</span>  <br/>
+    Trofeus base Clan:  <span property="trofeus base">{{clan.trofeusBase }}</span>  <br/>
+    Ubicació Clan:      <span property="ubicació">{{clan.ubicacio }}</span>  <br/>
 
 </p>
 
