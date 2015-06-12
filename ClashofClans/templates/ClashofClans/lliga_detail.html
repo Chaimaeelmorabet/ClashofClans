@@ -17,8 +17,17 @@
 
 <p>
     ID de la lliga:     {{lligue.id }}  <br/>
-    Premi:              <span property="premi">{{ lligue.premi }}</span> <br/>
     Copes:              <span property="numCopes">{{ lligue.numCopes }}</span> <br/>
+    <div  property="premi" typeof="Premi">
+        <b> Premi: </b><br/>
+        <pre>
+        Nom: <a  property="nom">{{ lligue.premi.nom }} </a> <br/>
+        Id: <a  property="id">{{ lligue.premi.id }} </a> <br/>
+        Oro: <a  property="oro">{{ lligue.premi.oro }} </a> <br/>
+        Elixir: <a  property="elixir">{{ lligue.premi.elixir }} </a> <br/>
+        Elixir Negre: <a  property="elixirNegre">{{ lligue.premi.elixirNegre }} </a> <br/>
+        </pre>
+    </div>
 
 
 </p>

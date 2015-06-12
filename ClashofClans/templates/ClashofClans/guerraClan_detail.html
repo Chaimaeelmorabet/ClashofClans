@@ -16,8 +16,24 @@
 <h2>Detalls: </h2>
 
 <p>
-    Clan 1: <span property="clan1">{{ guerra.clan1 }}</span>  <br/>
-    Clan 2: <span property="clan2">{{ guerra.clan2 }}</span>  <br/>
+    <div  property="clan" typeof="Clan">
+        <br/><b> Clan1: </b><br/><br/>
+        Nom: <a  property="nom">{{ guerra.clan1.nom }} </a> <br/>
+        Id: <a  property="id">{{ guerra.clan1.id }} </a> <br/>
+        Punts: <a  property="punts">{{ guerra.clan1.punts }} </a> <br/>
+        Tipus: <a  property="tipus">{{ guerra.clan1.tipus }} </a> <br/>
+        Trofeus Base: <a  property="trofeusBase">{{ guerra.clan1.trofeusBase }} </a> <br/>
+        Ubicació: <a  property="ubicacio">{{ jugador.clan.ubicacio }} </a> <br/>
+  </div>
+    <div  property="clan" typeof="Clan">
+        <br/><b> Clan2: </b><br/><br/>
+        Nom: <a  property="nom">{{ guerra.clan2.nom }} </a> <br/>
+        Id: <a  property="id">{{ guerra.clan2.id }} </a> <br/>
+        Punts: <a  property="punts">{{ guerra.clan2.punts }} </a> <br/>
+        Tipus: <a  property="tipus">{{ guerra.clan2.tipus }} </a> <br/>
+        Trofeus Base: <a  property="trofeusBase">{{ guerra.clan2.trofeusBase }} </a> <br/>
+        Ubicació: <a  property="ubicacio">{{ guerra.clan2.ubicacio }} </a> <br/>
+  </div>
 </p>
 
 </span>
