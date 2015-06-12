@@ -6,7 +6,7 @@
 
 <span vocab="http://schema.org/" typeof="PremiLligue">
 <h1>
-    <span  property="id">Premi Lliga {{ premilligue.id }}</span>
+    Premi Lliga <span  property="nom"> {{ premilligue.nom }}</span>
     {% if user == premilligue.user %}
         (<a href="{% url 'ClashofClans:premiLliga_edit' premilligue.id %}">edit</a>)
         (<a href="{% url 'ClashofClans:premiLliga_delete' premilligue.id %}">delete</a>)
@@ -16,9 +16,10 @@
 <h2>Detalls: </h2>
 
 <p>
-    Or: {{ premilligue.oro }} <br/>
-    Elixir: {{ premilligue.elixir }} <br/>
-    Elixir Negre: {{ premilligue.elixirNegre }} <br/>
+    Id Premi:       <span  property="id"> {{ premilligue.id }}</span> </br>
+    Or:             <span  property="oro">{{ premilligue.oro }}</span> <br/>
+    Elixir:         <span  property="elixir">{{ premilligue.elixir }}</span> <br/>
+    Elixir Negre:   <span  property="elixirNegre">{{ premilligue.elixirNegre }}</span> <br/>
 </p>
 
 </span>
