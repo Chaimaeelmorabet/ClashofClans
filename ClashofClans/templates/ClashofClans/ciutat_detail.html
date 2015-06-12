@@ -21,7 +21,33 @@
         Id: <a  property="id">{{ ciutat.jugador.id }} </a> <br/>
         Nivell: <a  property="nivell">{{ ciutat.jugador.nivell }} </a> <br/>
         Lliga: <a  property="lliga">{{ ciutat.jugador.lliga }} </a> <br/>
-        Clan: <a  property="clan">{{ ciutat.jugador.clan }} </a> <br/>
+        <div  property="lligue" typeof="Lligue">
+        <br/><b> Lliga: </b><br/>
+        Id: <a  property="id">{{ ciutat.jugador.lliga.id }} </a> <br/>
+        Numero de Copes: <a  property="numCopes">{{ ciutat.jugador.lliga.numCopes }} </a> <br/>
+            <div  property="premi" typeof="Premi">
+                <b> Premi: </b><br/>
+                <pre>
+                Nom: <a  property="nom">{{ ciutat.jugador.lliga.premi.nom }} </a> <br/>
+                Id: <a  property="id">{{ ciutat.jugador.lliga.premi.id }} </a> <br/>
+                Oro: <a  property="oro">{{ ciutat.jugador.lliga.premi.oro }} </a> <br/>
+                Elixir: <a  property="elixir">{{ ciutat.jugador.lliga.premi.elixir }} </a> <br/>
+                Elixir Negre: <a  property="elixirNegre">{{ ciutat.jugador.lliga.premi.elixirNegre }} </a> <br/>
+                </pre>
+        </div>
+
+    </div>
+    <div  property="clan" typeof="Clan">
+        <br/><b> Clan: </b><br/><br/>
+        <pre>
+        Nom: <a  property="nom">{{ ciutat.jugador.clan.nom }} </a> <br/>
+        Id: <a  property="id">{{ ciutat.jugador.clan.id }} </a> <br/>
+        Punts: <a  property="punts">{{ ciutat.jugador.clan.punts }} </a> <br/>
+        Tipus: <a  property="tipus">{{ ciutat.jugador.clan.tipus }} </a> <br/>
+        Trofeus Base: <a  property="trofeusBase">{{ ciutat.jugador.clan.trofeusBase }} </a> <br/>
+        Ubicació: <a  property="ubicacio">{{ ciutat.jugador.clan.ubicacio }} </a> <br/>
+        </pre>
+    </div>
   </div>
 
 
