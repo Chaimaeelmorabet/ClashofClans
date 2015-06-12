@@ -23,12 +23,21 @@
     <div  property="lligue" typeof="Lligue">
         <b> Lliga: </b><br/><br/>
         Id: <a  property="id">{{ jugador.lliga.id }} </a> <br/>
-        Premi: <a  property="premi">{{ jugador.lliga.premi }} </a> <br/>
         Numero de Copes: <a  property="numCopes">{{ jugador.lliga.numCopes }} </a> <br/>
+            <div  property="premi" typeof="Premi">
+                <b> Premi: </b><br/>
+                <pre>
+                Nom: <a  property="nom">{{ jugador.lliga.premi.nom }} </a> <br/>
+                Id: <a  property="id">{{ jugador.lliga.premi.id }} </a> <br/>
+                Oro: <a  property="oro">{{ jugador.lliga.premi.oro }} </a> <br/>
+                Elixir: <a  property="elixir">{{ jugador.lliga.premi.elixir }} </a> <br/>
+                Elixir Negre: <a  property="elixirNegre">{{ jugador.lliga.premi.elixirNegre }} </a> <br/>
+                </pre>
+            </div>
+
     </div>
 
 
-    <div  property="clan" typeof="Clan">
     <div  property="clan" typeof="Clan">
         <br/><b> Clan: </b><br/><br/>
         Nom: <a  property="nom">{{ jugador.clan.nom }} </a> <br/>
