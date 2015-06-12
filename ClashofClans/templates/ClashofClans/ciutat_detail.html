@@ -14,9 +14,17 @@
 </h1>
 <h2>Detalls: </h2>
 
-<p>
-    Jugador: <span property="jugador">{{ ciutat.jugador }}</span>  <br/>
-</p>
+  <div  property="jugador" typeof="Jugador">
+        <b> Jugador: </b><br/><br/>
+        Nom: <a  property="nom">{{ ciutat.jugador.nom }} </a> <br/>
+        Localització: <a  property="localització">{{ ciutat.jugador.localitzacio }} </a> <br/>
+        Id: <a  property="id">{{ ciutat.jugador.id }} </a> <br/>
+        Nivell: <a  property="nivell">{{ ciutat.jugador.nivell }} </a> <br/>
+        Lliga: <a  property="lliga">{{ ciutat.jugador.lliga }} </a> <br/>
+        Clan: <a  property="clan">{{ ciutat.jugador.clan }} </a> <br/>
+  </div>
+
+
 
 
 </span>
