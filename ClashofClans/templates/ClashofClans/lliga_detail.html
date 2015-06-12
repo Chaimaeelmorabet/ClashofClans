@@ -6,7 +6,7 @@
 
 <span vocab="http://schema.org/" typeof="Lliga">
 <h1>
-    <span property="id">Lliga {{ lligue.id }}</span>
+    Lliga <span property="id"> {{ lligue.id }}</span>
     {% if user == lligue.user %}
         (<a href="{% url 'ClashofClans:lliga_edit' lligue.id %}">edit</a>)
         (<a href="{% url 'ClashofClans:lliga_delete' lligue.id %}">delete</a>)
@@ -16,9 +16,9 @@
 <h2>Detalls: </h2>
 
 <p>
-    ID de la lliga: {{lligue.id }}  <br/>
-    Premi: {{ lligue.premi }} <br/>
-    Copes: {{ lligue.numCopes }} <br/>
+    ID de la lliga:     {{lligue.id }}  <br/>
+    Premi:              <span property="premi">{{ lligue.premi }}</span> <br/>
+    Copes:              <span property="numCopes">{{ lligue.numCopes }}</span> <br/>
 
 
 </p>

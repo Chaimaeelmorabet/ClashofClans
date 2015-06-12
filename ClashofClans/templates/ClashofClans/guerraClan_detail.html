@@ -6,7 +6,7 @@
 
 <span vocab="http://schema.org/" typeof="Guerra">
 <h1>
-    <span  property="id">Guerra {{ guerra.id }}</span>
+    Guerra<span  property="id"> {{ guerra.id }}</span>
     {% if user == guerra.user %}
         (<a href="{% url 'ClashofClans:guerraClan_edit' guerra.id %}">edit</a>)
         (<a href="{% url 'ClashofClans:guerraClan_delete' guerra.id %}">delete</a>)
